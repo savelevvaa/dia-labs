@@ -1,3 +1,5 @@
+import argparse
+
 def checkCoefficients(a, b, c):
     if (a, b, c) == (0, 0, 0):
         print("\033[33mВведите ненулевые аргументы\033[0m")
@@ -75,14 +77,50 @@ def discriminant(a, b, c):
         print("\033[31mДействительных корней нет!\033[0m")
         return 1
 
+def checkArgs(a, b, c, firstRunWithArgs):
+    if a == None and b == None and c == None:
+        firstRunWithArgs = True
+    elif a == None and b == None:
+        a = 0; b = 0;
+    elif a == None and c == None:
+        a = 0; c= 0;
+    elif b == None and c == None:
+        b = 0; c = 0;
+    elif a == None:
+        a = 0
+    elif b == None:
+        b = 0
+    elif c == None:
+        c = 0
+    return (a, b, c, firstRunWithArgs)
+
+
 print("\033[34mРешаем биквадратные уравнения \033[0m")
 
 stop = 0
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--a", help = "Коэффициент А Биквадратного уравнения", default=None, type=float)
+parser.add_argument("--b", help = "Коэффициент B Биквадратного уравнения", default=None, type=float)
+parser.add_argument("--c", help = "Коэффициент C Биквадратного уравнения", default=None, type=float)
+args = parser.parse_args()
+firstRunWithArgs = False
+
 while stop == 0:
-    a = float(input("\nВведите первый аргумент: "))
-    b = float(input("Введите второй аргумент: "))
-    c = float(input("Введите третий аргумент: "))
+
+    argsValues = checkArgs(args.a, args.b, args.c, firstRunWithArgs)
+
+    if argsValues[3] == False:
+        a = argsValues[0]
+        b = argsValues[1]
+        c = argsValues[2]
+        firstRunWithArgs = True
+    else:
+        a = float(input("\nВведите первый аргумент: "))
+        b = float(input("Введите второй аргумент: "))
+        c = float(input("Введите третий аргумент: "))
+
+    print(f"\n\033[33mУравнение:\033[0m {a}X^4 + {b}X^2 + {c} = 0\n")
 
     stop = checkCoefficients(a, b, c)
 
