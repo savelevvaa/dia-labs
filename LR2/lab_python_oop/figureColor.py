@@ -1,4 +1,4 @@
-class figureColor:
+class FigureColor:
     def __init__(self):
         self._color = None
 
