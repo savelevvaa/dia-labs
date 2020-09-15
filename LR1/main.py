@@ -1,6 +1,6 @@
 import argparse
-#import funcs
-from LR1 import funcs # для запуска через терминал изменить на "import funcs"
+import funcs
+#from LR1 import funcs # для запуска через терминал изменить на "import funcs"
 
 
 print("\033[34mРешаем биквадратные уравнения \033[0m")
