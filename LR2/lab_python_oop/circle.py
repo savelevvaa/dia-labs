@@ -15,4 +15,4 @@ class Circle(GeomFigure):
         return math.pi*pow(self.r, 2)
 
     def about(self):
-        print("Фигура: {}, Радиус: {}, Площадь: {}, Цвет: {}".format(self.fig, self.r, self.square(), self.figureColor.get()))
+        print("Фигура: \033[31m{}\033[0m, Радиус: {}, Площадь: {}, Цвет: {}".format(self.fig, self.r, self.square(), self.figureColor.get()))

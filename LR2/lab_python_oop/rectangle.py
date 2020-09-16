@@ -15,4 +15,4 @@ class Rectangle(GeomFigure):
         return self.h * self.w
 
     def about(self):
-        print("Фигура: {}, Ширина: {}, Высота: {}, Цвет: {}".format(self.fig, self.w, self.h, self.figureColor.get()))
+        print("Фигура: \033[31m{}\033[0m, Ширина: {}, Высота: {}, Площадь: {}, Цвет: {}".format(self.fig, self.w, self.h, self.square(), self.figureColor.get()))
