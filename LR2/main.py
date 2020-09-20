@@ -15,6 +15,11 @@ def main():
     sqd.about()
     circ.about()
 
+    print("\n\033[33mИспользуя magic-метод \033[35m__repr__\033[0m:")
+    print(rect)
+    print(sqd)
+    print(circ)
+
 
 if __name__ == "__main__":
     main()
