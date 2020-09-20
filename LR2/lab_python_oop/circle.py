@@ -21,3 +21,10 @@ class Circle(GeomFigure):
     # Метода печати информации об объекте класса на консоль
     def about(self):
         print("Фигура: \033[31m{}\033[0m, Радиус: {}, Площадь: {}, Цвет: {}".format(self.fig, self.r, self.square(), self.figureColor.get()))
+
+    def __repr__(self):
+        return "Фигура: \033[31m{}\033[0m, Радиус: {}, Площадь: {}, Цвет: {}".format(
+            self.fig,
+            self.r,
+            self.square(),
+            self.figureColor.get())
