@@ -20,3 +20,10 @@ class Squad(Rectangle):
     # Метода печати информации об объекте класса на консоль
     def about(self):
         print("Фигура: \033[31m{}\033[0m, Сторона: {}, Площадь: {}, Цвет: {}".format(self.fig, self.side, self.square(), self.figureColor.get()))
+
+    def __repr__(self):
+        return "Фигура: \033[31m{}\033[0m, Сторона: {}, Площадь: {}, Цвет: {}".format(
+            self.fig,
+            self.side,
+            self.square(),
+            self.figureColor.get())
