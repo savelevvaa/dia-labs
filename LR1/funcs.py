@@ -1,3 +1,4 @@
+# функция проверки коэффициентов уровнения
 def checkCoefficients(a, b, c):
     if (a, b, c) == (0, 0, 0):
         print("\033[33mВведите ненулевые аргументы\033[0m")
@@ -35,7 +36,7 @@ def checkCoefficients(a, b, c):
         print("\033[33mПопробуйте другие коэфициенты...\033[0m")
         return -1
     return 0
-
+# функция вычисления дискриминанта
 def discriminant(a, b, c):
 
     D = pow(b, 2) - (4 * a * c)
@@ -75,6 +76,7 @@ def discriminant(a, b, c):
         print("\033[31mДействительных корней нет!\033[0m")
         return 1
 
+# функция проверки аргументов командной строки
 def checkArgs(a, b, c, firstRunWithArgs):
     if a == None and b == None and c == None:
         firstRunWithArgs = True
