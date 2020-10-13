@@ -1,7 +1,11 @@
-# Пример:
-# gen_random(5, 1, 3) должен выдать выдать 5 случайных чисел
-# в диапазоне от 1 до 3, например 2, 2, 3, 2, 1
-# Hint: типовая реализация занимает 2 строки
+import random
+
+# функция рандомайзер
 def gen_random(num_count, begin, end):
-    pass
-    # Необходимо реализовать генератор
+    result = []     # лист для результата
+    if begin > end: temp = begin; begin = end; end = temp; # проверка границ интервала (корректирование)
+    for i in range(0, num_count):
+        result.append(random.randint(begin, end))
+    return result
+
+print(gen_random(1, 0, 100))
