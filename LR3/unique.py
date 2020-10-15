@@ -11,7 +11,10 @@ class Unique(object):
     def __next__(self):
         if self.iCase == False:
             for i in self.items:
-                self.temp.append(str(i).upper())
+                if type(i) == str:
+                    self.temp.append(i.upper())
+                else:
+                    self.temp.append(i)
         else:
             self.temp = self.items
         while True:
@@ -30,7 +33,13 @@ class Unique(object):
 # list1 = [1,2,3,4,4,3,2,4,5,3,6,7,8]
 # list2 = ['a','B','c','d','c','e','a','B','C','A','b']
 # list3 = ['a','B',1,'c','d',3,'c','e',3,'a','B',2,'C',5,'A',5,'b']
+# uniqueList = []
 #
-# for i in Unique(list3, ignore=False):
+# for i in Unique(list3, ignore=True):
+#     uniqueList.append(i)
 #     print(i)
+#
+# print(uniqueList)
+# #print(sorted(uniqueList))
+
 
