@@ -1,4 +1,3 @@
-# Итератор для удаления дубликатов
 class Unique(object):
     def __init__(self, items, **kwargs):
         self.i = 0
@@ -8,12 +7,6 @@ class Unique(object):
         self.uniqueItems = set()
         self.temp = []
         self.items = items
-        # Нужно реализовать конструктор
-        # В качестве ключевого аргумента, конструктор должен принимать bool-параметр ignore_case,
-        # в зависимости от значения которого будут считаться одинаковыми строки в разном регистре
-        # Например: ignore_case = True, Aбв и АБВ - разные строки
-        #           ignore_case = False, Aбв и АБВ - одинаковые строки, одна из которых удалится
-        # По-умолчанию ignore_case = False
 
     def __next__(self):
         if self.iCase == False:
@@ -34,10 +27,10 @@ class Unique(object):
     def __iter__(self):
         return self
 
-list1 = [1,2,3,4,4,3,2,4,5,3,6,7,8]
-list2 = ['a','B','c','d','c','e','a','B','C','A','b']
-list3 = ['a','B',1,'c','d',3,'c','e',3,'a','B',2,'C',5,'A',5,'b']
-
-for i in Unique(list3, ignore=False):
-    print(i)
+# list1 = [1,2,3,4,4,3,2,4,5,3,6,7,8]
+# list2 = ['a','B','c','d','c','e','a','B','C','A','b']
+# list3 = ['a','B',1,'c','d',3,'c','e',3,'a','B',2,'C',5,'A',5,'b']
+#
+# for i in Unique(list3, ignore=False):
+#     print(i)
 
