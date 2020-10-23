@@ -10,6 +10,12 @@ class Unique(object):
 
     def __next__(self):
         if self.iCase == False:
+            if str(type(self.items)) == "<class 'generator'>":
+                print()
+                # self.genList = self.generator(self.items)
+                # todo доделать итератор (ошибка именно в нем!!!!)
+
+
             for i in self.items:
                 if type(i) == str:
                     self.temp.append(i.upper())
@@ -26,6 +32,15 @@ class Unique(object):
                 if item not in self.uniqueItems:
                     self.uniqueItems.add(item)
                     return item
+
+    def generator(self, gen):
+        list = []
+        while True:
+            try:
+                list.append(gen.__next__())
+            except StopIteration:
+                break
+        return list
 
     def __iter__(self):
         return self

@@ -12,6 +12,7 @@ def print_result(func_to_decorate):
                 print(v)
         else:
             print(funcReturn)
+        return funcReturn
 
     return decorated_func
 
