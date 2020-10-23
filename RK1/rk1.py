@@ -1,9 +1,6 @@
 from operator import itemgetter
 
-"""
-    Савельев Алескей, группа ИУ5-54Б,
-    Вариант Г-17
-"""
+""" Савельев Алескей, группа ИУ5-54Б, Вариант Г-17 """
 
 tasks = [
     "Список оркестров на букву 'А' и их дирижеров",                         # Г1
@@ -39,7 +36,6 @@ class CondOrc:
         self.orc_id = orc_id
         self.cond_id = cond_id
 
-
 # Оркестры
 orcestras = [
     Orcestra(1, 'Симфонические оркестр'),
@@ -57,7 +53,7 @@ conductors = [
     Сonductor(2, 'Воробьев ГА', 42000, 2),
     Сonductor(3, 'Нинтедович ВВ', 45000, 22),
     Сonductor(4, 'Вайбенко КК', 62000, 3),
-    Сonductor(5, 'Петрухин НА', 52000, 33),
+    Сonductor(5, 'Петрухин НА', 52000, 33)
 ]
 
 # Связь
@@ -72,7 +68,7 @@ conds_orcs = [
     CondOrc(22, 2),
     CondOrc(33, 3),
     CondOrc(33, 4),
-    CondOrc(33, 5),
+    CondOrc(33, 5)
 ]
 
 
