@@ -1,19 +1,18 @@
-def print_result(func_to_decorate):
-    def decorated_func():
-        funcName = str(func_to_decorate).split()[1]
-        funcReturn = func_to_decorate()
-        print(funcName)
-        if type(funcReturn) == dict:
-            for k, v in funcReturn.items():
-                print(str(k) + " = " + str(v))
-        elif type(funcReturn) == list:
-            for v in funcReturn:
-                print(v)
-        else:
-            print(funcReturn)
-        return funcReturn
+def print_result(func):
+  def wrapper(*args, **kwargs):
+    res = func(*args, **kwargs)
+    print("\033[31m" + func.__name__ + "\033[0m")
+    if isinstance(res, dict):
+      for k in res.keys():
+        print("{} = {}".format(k, res[k]))
+    elif isinstance(res, list):
+      for val in res:
+        print(val)
+    else:
+      print(res)
+    return res
+  return wrapper
 
-    return decorated_func
 
 
 @print_result
