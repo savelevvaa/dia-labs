@@ -1,19 +1,31 @@
 def field(items, *args):
     assert len(args) > 0, 'No Args'
-    for i in items:
-        for arg in args:
-            yield i[arg]
-            #rint(arg, '->', i[arg], end = ", ")
-        #print("\b\b;")
+    if len(args) > 1:
+        for item in items:
+            dict = {}
+            for arg in args:
+                if arg in item and item[arg] is not None:
+                    dict[arg] = item[arg]
+            if len(dict.keys()) > 0:
+                yield dict
+    elif len(args) == 1:
+        for item in items:
+            for arg in args:
+                if arg in item and item[arg] is not None:
+                    yield item[arg]
+
+def main():
+    print(list(field(goods, 'title', 'price')))
+    print(list(field(goods, 'color')))
+    print(list(field(goods, 'title')))
 
 goods = [
-    {'title': 'Ковер', 'price': 2000, 'color': 'green'},
-    {'title': 'Диван для отдыха', 'price': 5300, 'color': 'black'}
-]
+        {'title': 'Ковер', 'price': 2000, 'color': 'green'},
+        {'title': 'Диван для отдыха', 'color': 'black'},
+        {'title': None, 'price': None},
+    ]
 
-temp = field(goods, 'title', 'price')
-print(field(goods))
+if __name__ == '__main__':
+    main()
 
-for i in range(2):
-    j = next(temp)
-    print(j)
+
