@@ -8,4 +8,10 @@ def gen_random(num_count, begin, end):
         result.append(random.randint(begin, end))
     return result
 
-print(gen_random(1, 0, 100))
+def main():
+    print(gen_random(10, 0, 12))
+    print(gen_random(15, 0, 1))
+    print(gen_random(5, -5, 0))
+
+if __name__ == "__main__":
+    main()

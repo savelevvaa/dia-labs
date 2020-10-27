@@ -1,4 +1,3 @@
-# Здесь должна быть реализация декоратора
 def print_result(func_to_decorate):
     def decorated_func():
         funcName = str(func_to_decorate).split()[1]
@@ -37,9 +36,13 @@ def test_4():
     return [1, 2]
 
 
-if __name__ == '__main__':
+def main():
     print('!!!!!!!!')
     test_1()
     test_2()
     test_3()
     test_4()
+
+
+if __name__ == '__main__':
+    main()
