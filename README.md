@@ -9,5 +9,7 @@
 
 ## Лабораторные работы
 * [Рубежный контроль №1](https://github.com/dlnwlkmn/dia-labs/tree/master/RK1)
+
 * [Лабораторная работа №1](https://github.com/dlnwlkmn/dia-labs/tree/master/LR1)
 * [Лабораторная работа №2](https://github.com/dlnwlkmn/dia-labs/tree/master/LR2)
+* [Лабораторная работа №3](https://github.com/dlnwlkmn/dia-labs/tree/master/LR3)
