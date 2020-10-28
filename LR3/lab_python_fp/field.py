@@ -4,14 +4,14 @@ def field(items, *args):
         for item in items:
             dict = {}
             for arg in args:
-                if arg in item and item[arg] is not None:
+                if (arg in item) and (item[arg] is not None):
                     dict[arg] = item[arg]
             if len(dict.keys()) > 0:
                 yield dict
     elif len(args) == 1:
         for item in items:
             for arg in args:
-                if arg in item and item[arg] is not None:
+                if (arg in item) and (item[arg] is not None):
                     yield item[arg]
 
 def main():

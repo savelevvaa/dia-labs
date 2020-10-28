@@ -1,17 +1,17 @@
 def print_result(func):
-  def wrapper(*args, **kwargs):
-    res = func(*args, **kwargs)
+  def decoratedFunc(*args, **kwargs):
+    result = func(*args, **kwargs)
     print("\033[31m" + func.__name__ + "\033[0m")
-    if isinstance(res, dict):
-      for k in res.keys():
-        print("{} = {}".format(k, res[k]))
-    elif isinstance(res, list):
-      for val in res:
-        print(val)
+    if isinstance(result, dict):
+      for key in result.keys():
+        print("{} = {}".format(key, result[key]))
+    elif isinstance(result, list):
+      for value in result:
+        print(value)
     else:
-      print(res)
-    return res
-  return wrapper
+      print(result)
+    return result
+  return decoratedFunc
 
 
 

@@ -20,7 +20,7 @@ def f1(arg):
 @print_result.print_result
 def f2(arg):
     # отбираем только те названия, которые начинаются со слова "программист"
-    return list(filter(lambda x: x.startswith("программист"), arg))
+    return list(filter(lambda x: x.startswith("Программист"), arg))
 
 
 @print_result.print_result
