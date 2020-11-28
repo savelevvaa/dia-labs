@@ -1,4 +1,5 @@
-from LR3.lab_python_fp import print_result, unique, gen_random, field, cm_timer
+from lab_python_fp import print_result, unique, gen_random, field, cm_timer
+#from LR3.lab_python_fp import print_result, unique, gen_random, field, cm_timer
 import json
 
 # Путь к json файлу
