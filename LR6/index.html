@@ -1,0 +1,130 @@
+<meta charset="UTF-8">
+<html>
+  <head>
+    <title>Index</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      h1 {
+        font-size: 16pt;
+      }
+      p {
+        font-size: 8pt;
+        margin-top: 3;
+        margin-bottom: 3;
+      }
+      input.text{
+        width: 100%;
+      }
+      select {
+        width: 100%;
+      }
+      textarea {
+        width: 350px;
+        height: 70px;
+      }
+      button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .rect {
+        max-width: 350px;
+        height: 480px;
+        margin: auto;
+        border: 2px solid #333333;
+        padding-left: 25px;
+        padding-right: 25px;
+        background-color: #bbb;
+        border-radius: 7px;
+      }
+      .checkboxes {
+        margin-top: 3;
+        margin-bottom: 20;
+      }
+      .radiobuttons {
+        margin-top: 3;
+        margin-bottom: 3;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="rect">
+      <h1>HTML формы</h1>
+      <form>
+        <div>
+          <p>
+            Текстовое поле:
+          </p>
+
+          <input name="text" type="text" placeholder="Введите текст" size="48" required></input>
+
+          <p>
+            Селектор:
+          </p>
+
+          <select name="combobox" role="combobox" required>
+            <option value="firstItem">Опция 1</option>
+            <option value="secondItem">Опция 2</option>
+            <option value="therdItem">Опция 3</option>
+          </select>
+          <div class="checkboxes">
+            <input name="checkbox1" id="checkbox1" type="checkbox">
+            <label for="checkbox1">Чекбокс 1</label>
+            <input name="checkbox2" id="checkbox2" type="checkbox">
+            <label for="checkbox2">Чекбокс 2</label>
+          </div>
+
+          <p>
+            Описание:
+          </p>
+
+          <textarea name="description" placeholder="Текстовое поле" required></textarea>
+
+          <div class="radiobuttons">
+              <input name="radiogroup" value="radio1" id="radio1" type="radio" checked="checked"/>
+              <label for="radio1">Радиокнопка 1</label>
+              <input name="radiogroup" value="radio1" id="radio2" type="radio"/>
+              <label for="radio2">Радиокнопка 2</label>
+          </div>
+
+          <p>
+            Список:
+          </p>
+
+          <select name="listbox" role="listbox" size="5" required>
+            <option value="listitem1">Пункт 1</option>
+            <option value="listitem2">Пункт 2</option>
+            <option value="listitem3">Пункт 3</option>
+            <option value="listitem2">Пункт 4</option>
+            <option value="listitem3">Пункт 5</option>
+          </select>
+
+          <p>
+            Список на основе текстового поля:
+          </p>
+
+          <input name="datalist" list="datalistitems" size="48">
+            <datalist id="datalistitems">
+              <option value="Пункт 1"></option>
+              <option value="Пункт 2"></option>
+              <option value="Пункт 3"></option>
+              <option value="Пункт 4"></option>
+            </datalist>
+          </input>
+
+          <button type="button" onclick="alert('Модеальное окно открыто')">
+            <img src="icon.svg" width="20" height="20"/>
+            Модальное окно
+          </button>
+
+          <input type="submit" value="Отправить"></input>
+
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
