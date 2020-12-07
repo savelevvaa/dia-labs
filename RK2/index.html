@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RK2</title>
+	<style>
+		body {
+			background-color: #AEC1FF; 
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		table {
+        width: 100%;
+	    }
+	    th, td {
+		    border: 2px solid #6E80DC;
+ 	        padding: 10px;
+ 	        text-align: center;
+	     }
+
+	    th {
+	        background-color: #1A1BBA;
+	        color: white;
+	    }
+	    td {
+	        background-color: #97A8FF;
+	        color: black;
+	    }
+
+	    ol {
+	    	margin: 0px 150px;
+	    }
+
+	    .container {
+			margin: 5px 200px 50px 200px;
+		}
+	    .conductor * > tr:nth-child(odd) > td {
+        	background-color: #B9C5FF;
+      	}
+      	.orcestra > :nth-child(odd) {
+      		background-color: #97A8FF;
+      	}
+      	.orcestra > :nth-child(even) {
+      		background-color: #B9C5FF;
+      	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Таблица с увеличенными внутринними границами, класс "Дирижёр"</h1>
+		<table cellspacing="2" class="conductor">
+	      <tr>
+	        <th>ФИО</th>
+	        <th>Стаж (лет)</th>
+	        <th>ЗП (т.р.₽)</th>
+	      </tr>
+	      <tr>
+	        <td>Рулёв А.Б.</td>
+	        <td>4</td>
+	        <td>36</td>
+	      </tr>
+	      <tr>
+	        <td>Губкин Д.В.</td>
+	        <td>5</td>
+	        <td>42</td>
+	      </tr>
+	      <tr>
+	        <td>Дектерёв В.А.</td>
+	        <td>2</td>
+	        <td>30</td>
+	      </tr>
+	      <tr>
+	        <td>Бибирев Д.Д.</td>
+	        <td>8</td>
+	        <td>50</td>
+	      </tr>
+	      <tr>
+	        <td>Машкин Г.И.</td>
+	        <td>10</td>
+	        <td>55</td>
+	      </tr>
+	    </table>
+	</div>
+	<div class="container">
+		<h1>Нумерованный список, класс "Оркестр"</h1>
+		<ol class="orcestra">
+			<li>Симфонический оркестр</li>
+			<li>Струнный оркестр</li>
+			<li>Духовой оркестр</li>
+			<li>Струнный оркестр</li>
+			<li>Военный оркестр</li>
+		</ol>
+	</div>
+</body>
+</html>
