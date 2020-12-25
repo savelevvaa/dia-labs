@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Phenomenon, Description
 
-# Register your models here.
+
+admin.site.register(Phenomenon)
+admin.site.register(Description)

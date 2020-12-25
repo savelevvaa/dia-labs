@@ -1,4 +1,24 @@
 {% extends 'main/base.html'%}
 
-{% block title %} Главная страница{% endblock %}
-{% block content %} <h1>Детали</h1> {% endblock %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <h1>Детали: {{ pnen.name }}</h1>
+    <p class="card-text">{{ description.description }}</p>
+    {% if pnen.id == 1 %}
+        <img  style="max-width: 250px; height: auto" src="static/main/images/1.jpg" alt="tenet" class="rounded img-fluid">
+    {% endif %}
+    {% if pnen.id == 2 %}
+        <img style="max-width: 300px; height: auto" src=static/main/images/2.jpg" alt="Interstellar" class="rounded img-fluid">
+    {% endif %}
+    {% if pnen.id == 3 %}
+        <img style="max-width: 150px; height: auto" src="static/main/images/3.jpg" alt="The Social Network" class="rounded img-fluid">
+    {% endif %}
+    {% if pnen.id == 4 %}
+        <img style="max-width: 250px; height: auto" src="static/main/images/4.jpg" alt="The Wolf of Wall Street" class="rounded img-fluid">
+    {% endif %}
+    {% if pnen.id == 5 %}
+        <img style="max-width: 300px; height: auto" src="static/main/images/5.jpg" %}" alt="Snowden" class="rounded img-fluid">
+    {% endif %}
+{% endblock %}

@@ -1,4 +1,44 @@
 {% extends 'main/base.html'%}
 
-{% block title %} Главная страница{% endblock %}
-{% block content %} <h1>Главная страница</h1> {% endblock %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <h1>{{ title }}</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for phen in phen_list %}
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="40%" y="50%" fill="#eceeef" dy=".3em">
+                {{ phen.name }}</text></svg>
+
+            <div class="card-body">
+              <a href="{% url 'details' phen.id %}"><h5>{{ phen.name }}</h5></a>
+              {% if phen.id == 1 %}
+                  <p class="card-text">Захватывающее астрономическое явление</p>
+              {% endif %}
+              {% if phen.id == 2 %}
+                  <p class="card-text">Колебания/столкновения земной поверхности</p>
+              {% endif %}
+              {% if phen.id == 3 %}
+                  <p class="card-text">Падающий объем снежной массы</p>
+              {% endif %}
+              {% if phen.id == 4 %}
+                  <p class="card-text">Сокрушительное атмосферное явление</p>
+              {% endif %}
+              {% if phen.id == 5 %}
+                  <p class="card-text">Катастрофическое "наводнение", вызванное землетрясением"</p>
+              {% endif %}
+              {% if phen.id == 6 %}
+                  <p class="card-text">Обыденное атмосферное явление</p>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+{% endblock %}
