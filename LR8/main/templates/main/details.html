@@ -3,22 +3,36 @@
 {% block title %}
     {{ title }}
 {% endblock %}
+
+{% block styles %}
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+{% endblock %}
+
 {% block content %}
     <h1>Детали: {{ pnen.name }}</h1>
     <p class="card-text">{{ description.description }}</p>
+    {% load static %}
     {% if pnen.id == 1 %}
-        <img  style="max-width: 250px; height: auto" src="static/main/images/1.jpg" alt="tenet" class="rounded img-fluid">
+        <img class="center rounded img-fluid" style="max-width: 500px; height: auto;" src="{% static 'main/images/1.jpg' %}" alt="My image">
     {% endif %}
     {% if pnen.id == 2 %}
-        <img style="max-width: 300px; height: auto" src=static/main/images/2.jpg" alt="Interstellar" class="rounded img-fluid">
+        <img class="center rounded img-fluid" style="max-width: 500px; height: auto;" src="{% static 'main/images/2.jpg' %}" alt="My image">
     {% endif %}
     {% if pnen.id == 3 %}
-        <img style="max-width: 150px; height: auto" src="static/main/images/3.jpg" alt="The Social Network" class="rounded img-fluid">
+        <img class="center rounded img-fluid" style="max-width: 500px; height: auto;" src="{% static 'main/images/3.jpg' %}" alt="My image">
     {% endif %}
     {% if pnen.id == 4 %}
-        <img style="max-width: 250px; height: auto" src="static/main/images/4.jpg" alt="The Wolf of Wall Street" class="rounded img-fluid">
+        <img class="center rounded img-fluid" style="max-width: 500px; height: auto;" src="{% static 'main/images/4.jpg' %}" alt="My image">
     {% endif %}
     {% if pnen.id == 5 %}
-        <img style="max-width: 300px; height: auto" src="static/main/images/5.jpg" %}" alt="Snowden" class="rounded img-fluid">
+        <img class="center rounded img-fluid" style="max-width: 500px; height: auto;" src="{% static 'main/images/5.jpg' %}" alt="My image">
+    {% endif %}
+    {% if pnen.id == 6 %}
+        <img class="center rounded img-fluid" style="max-width: 500px; height: auto;" src="{% static 'main/images/6.jpg' %}" alt="My image">
     {% endif %}
 {% endblock %}
