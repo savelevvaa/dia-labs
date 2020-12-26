@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponse
 
 from .models import Phenomenon
 from .models import Description
@@ -19,4 +18,4 @@ def details(request, phen_id):
         if i.id == phen_id:
             phen = i
     description = get_object_or_404(Description, pk=phen_id)
-    return render(request, 'main/details.html', {'pnen': phen, 'description': description})
+    return render(request, 'main/details.html', {'title': 'Детали', 'pnen': phen, 'description': description})
