@@ -18,3 +18,4 @@
 * [Лабораторная работа №5](https://github.com/dlnwlkmn/dia-labs/tree/master/LR5)
 * [Лабораторная работа №6](https://github.com/dlnwlkmn/dia-labs/tree/master/LR6)
 * [Лабораторная работа №7](https://github.com/dlnwlkmn/dia-labs/tree/master/LR7)
+* [Лабораторная работа №8](https://github.com/dlnwlkmn/dia-labs/tree/master/LR8)
