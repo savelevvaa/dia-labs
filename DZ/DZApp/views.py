@@ -1,7 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from .models import *
 
 def index(request):
-    return render(request, 'DZApp/index.html', {'title':'ДЗ', 'header':'Таблицы'})
+    table_list = Tables.objects.all()
+    table_names = []
+    for i in table_list:
+        # if i.name == "Поставщики" or i.name == "Продукты":
+        #     table_names.append(i.name)
+        table_names.append(i.name)
+    context = {'title':'ДЗ', 'header':'Таблицы', 'table_names':table_names}
+    return render(request, 'DZApp/index.html', context)
 
 
 def details(request):
