@@ -15,4 +15,15 @@
 
 {% block content %}
     <h1>Детали: {{ header }}</h1>
+    {% if table_data %}
+        <ul class="list-group">
+        {% for row in table_data %}
+        <li class="list-group-item">
+            <p></p>
+        </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No films are available.</p>
+    {% endif %}
 {% endblock %}

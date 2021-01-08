@@ -27,4 +27,5 @@ class Waybill(models.Model):
 
 class Tables(models.Model):
     name = models.CharField('Название таблицы', max_length=100)
+    index = models.IntegerField('Индекс', default=1)
 
