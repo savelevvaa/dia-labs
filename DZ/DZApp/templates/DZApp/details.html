@@ -16,13 +16,41 @@
 {% block content %}
     <h1>Детали: {{ header }}</h1>
     {% if table_data %}
-        <ul class="list-group">
-        {% for row in table_data %}
-        <li class="list-group-item">
-            <p></p>
-        </li>
+        <table>
+        {% if tab_index == 1 %}
+            <tr><th>Название</th></tr>
+        {% endif %}
+        {% if tab_index == 2 %}
+            <tr><th>Провайдер</th><th>Партнер</th><th>Цель партнерства</th></tr>
+        {% endif %}
+        {% if tab_index == 3 %}
+            <tr><th>Название</th><th>Адрес</th><th>Телефон</th></tr>
+        {% endif %}
+        {% if tab_index == 4 %}
+            <tr><th>Название продукта</th><th>Годность (дни)</th></tr>
+        {% endif %}
+        {% if tab_index == 5 %}
+            <tr><th>Поставщик</th><th>Продукт</th><th>Количество</th><th>Назначение</th><th>Дата</th></tr>
+        {% endif %}
+        {% for data_row in table_data %}
+            {% if tab_index == 1 %}
+                <tr><td>{{ data_row.name }}</td></tr>
+            {% endif %}
+            {% if tab_index == 2 %}
+                <tr><td>{{ data_row.provider }}</td><td>{{ data_row.partner }}</td><td>{{ data_row.designation }}</td></tr>
+            {% endif %}
+            {% if tab_index == 3 %}
+                <tr><td>{{ data_row.name }}</td><td>{{ data_row.address }}</td><td>{{ data_row.phone }}</td></tr>
+            {% endif %}
+            {% if tab_index == 4 %}
+                <tr><td>{{ data_row.product }}</td><td>{{ data_row.expire_time }}</td></tr>
+            {% endif %}
+            {% if tab_index == 5 %}
+                <tr><td>{{ data_row.provider }}</td><td>{{ data_row.product }}</td><td>{{ data_row.quantity }}</td>
+                <td>{{ data_row.destination }}</td><td>{{ data_row.date }}</td></tr>
+            {% endif %}
         {% endfor %}
-        </ul>
+        </table>
     {% else %}
         <p>No films are available.</p>
     {% endif %}

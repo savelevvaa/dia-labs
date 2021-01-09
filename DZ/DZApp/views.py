@@ -3,6 +3,7 @@ from .models import *
 
 def index(request):
     table_list = Tables.objects.all()
+    #temp = Provider.partners.
     table_names = []
     for i in table_list:
         # if i.name == "Поставщики" or i.name == "Продукты":
@@ -30,7 +31,9 @@ def details(request, tab_index):
     elif tab_index == 5:
         table_data = Waybill.objects.all()
         header = "Накладные"
-    return render(request, 'DZApp/details.html', {'title': 'Детали', 'header':header, 'table_data':table_data})
+    counter = 0
+    return render(request, 'DZApp/details.html', {'title': 'Детали', 'header':header, 'table_data':table_data,
+                                                  'tab_index':tab_index, 'counter':counter})
 
 def review(request):
     return render(request, 'DZApp/review.html', {'title': 'Отчет', 'header':'Отчет'})
