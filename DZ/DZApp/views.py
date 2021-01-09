@@ -33,8 +33,29 @@ def details(request, tab_index):
         header = "Накладные"
     counter = 0
     return render(request, 'DZApp/details.html', {'title': 'Детали', 'header':header, 'table_data':table_data,
-                                                  'tab_index':tab_index, 'counter':counter})
+                                                  'tab_index':tab_index})
 
 def review(request):
     return render(request, 'DZApp/review.html', {'title': 'Отчет', 'header':'Отчет'})
+
+def review_waybill(request):
+    header = "Поставки"
+
+    table_data = Waybill.objects.all()
+    providers = {}
+    for row in table_data:
+        prov_id = row.provider.id
+        providers[get_object_or_404(Provider, pk=prov_id).id] = get_object_or_404(Provider, pk=prov_id).phone
+
+    print(providers)
+
+    return render(request, 'DZApp/review_waybill.html', {'title': 'Отчет', 'header': header, 'table_data':table_data,
+                                                         'providers':providers})
+
+
+def review_partnership(request):
+    header = "Партнерство"
+    table_data = Partnership.objects.all()
+    return render(request, 'DZApp/review_waybill.html', {'title': 'Отчет', 'header': header, 'table_data':table_data})
+
 
