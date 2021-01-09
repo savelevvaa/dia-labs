@@ -7,15 +7,16 @@
     <h1>{{ header }}</h1>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     {% for tab in table_list %}
-
-        <div class="col mt-4">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <a href="{% url 'details' tab.index %}"><h5>{{ tab.name }}</h5></a>
-                <p class="card-text">Захватывающее астрономическое явление</p>
+        {% if tab.index != 2 and tab.index != 5 %}
+            <div class="col mt-4">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <a  class="hover-shadow" href="{% url 'details' tab.index %}"><h5>{{ tab.name }}</h5></a>
+                    <p class="card-text">{{ tab.description }}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+        {% endif %}
     {% endfor %}
     </div>
 {% endblock %}
