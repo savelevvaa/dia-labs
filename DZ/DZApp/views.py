@@ -3,12 +3,6 @@ from .models import *
 
 def index(request):
     table_list = Tables.objects.all()
-    #temp = Provider.partners.
-    table_names = []
-    for i in table_list:
-        # if i.name == "Поставщики" or i.name == "Продукты":
-        #     table_names.append(i.name)
-        table_names.append(i.name)
     context = {'title':'ДЗ', 'header':'Таблицы', 'table_list':table_list}
     return render(request, 'DZApp/index.html', context)
 
@@ -36,26 +30,18 @@ def details(request, tab_index):
                                                   'tab_index':tab_index})
 
 def review(request):
-    return render(request, 'DZApp/review.html', {'title': 'Отчет', 'header':'Отчет'})
+    table_list = Tables.objects.all()
+    context = {'title':'Отчет', 'header':'Отчет', 'table_list':table_list}
+    return render(request, 'DZApp/review.html', context)
 
-def review_waybill(request):
-    header = "Поставки"
+def review_details(request, tab_index):
 
-    table_data = Waybill.objects.all()
-    providers = {}
-    for row in table_data:
-        prov_id = row.provider.id
-        providers[get_object_or_404(Provider, pk=prov_id).id] = get_object_or_404(Provider, pk=prov_id).phone
+    if tab_index == 2:
+        table_data = Partnership.objects.all()
+        header = "Партнерство"
+    elif tab_index == 5:
+        table_data = Waybill.objects.all().select_related('provider', 'product')
+        header = "Поставки"
 
-    print(providers)
-
-    return render(request, 'DZApp/review_waybill.html', {'title': 'Отчет', 'header': header, 'table_data':table_data,
-                                                         'providers':providers})
-
-
-def review_partnership(request):
-    header = "Партнерство"
-    table_data = Partnership.objects.all()
-    return render(request, 'DZApp/review_waybill.html', {'title': 'Отчет', 'header': header, 'table_data':table_data})
-
-
+    return render(request, 'DZApp/review_details.html', {'title': 'Отчет', 'header': header, 'table_data':table_data,
+                                                         'tab_index':tab_index})
