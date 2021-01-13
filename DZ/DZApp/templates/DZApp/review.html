@@ -15,24 +15,21 @@
 
 {% block content %}
     <h1>{{ header }}</h1>
-    <div class="card w-75 mx-auto mb-10">
-      <div class="card-header">
-        Накладные
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Отчет по поставкам</h5>
-        <p class="card-text">В данной таблице представленны данные поставщиков и товаров</p>
-        <a href="{% url 'review_waybill' %}" class="btn btn-primary">К отчету</a>
-      </div>
-    </div>
-    <div class="card w-75 mx-auto">
-      <div class="card-header">
-        Партнерство
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">Отчет по партнерским отношениям</h5>
-        <p class="card-text">В данной таблице представленны связи поставщиков с партнерами</p>
-        <a href="{% url 'review_partnership' %}" class="btn btn-primary">К отчету</a>
-      </div>
-    </div>
+
+    {% for tab in table_list %}
+        {% if tab.index == 2 or tab.index == 5 %}
+
+            <div class="card w-75 mx-auto mb-10">
+              <div class="card-header">
+                {{ tab.name }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Отчет</h5>
+                <p class="card-text">{{ tab.description }}</p>
+                <a href="{% url 'review_details' tab.index %}" class="btn btn-primary">К отчету</a>
+              </div>
+            </div>
+            <br />
+        {% endif %}
+    {% endfor %}
 {% endblock %}
