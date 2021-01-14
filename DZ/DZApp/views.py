@@ -1,5 +1,14 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+
+from django.contrib import messages
+
+
+
 from .models import *
+from .forms import CreateUserForm
 
 def index(request):
     table_list = Tables.objects.all()
@@ -45,3 +54,39 @@ def review_details(request, tab_index):
 
     return render(request, 'DZApp/review_details.html', {'title': 'Отчет', 'header': header, 'table_data':table_data,
                                                          'tab_index':tab_index})
+
+def regPage(request):
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, "Пользователь " + user + " успешно зарегистрирован")
+
+            return redirect('login')
+
+    context = {'title':'Регистрация', 'form':form}
+    return render(request, 'DZApp/auth/registration.html', context)
+
+def loginPage(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, "Имя пользователя или пароль введены не верно")
+
+    context = {'title':'Авторизация'}
+    return render(request, 'DZApp/auth/login.html', context)
+
+def logoutPage(request):
+    logout(request)
+    return redirect('login')
