@@ -15,6 +15,9 @@
             {% if tab_index == 2 %}
                 <tr><th>Провайдер</th><th>Телефон</th><th>Адрес</th><th>Партнер</th><th>Цель партнерства</th></tr>
             {% endif %}
+            {% if tab_index == 4 %}
+                <tr><th>Название продукта</th><th>Годность (дни)</th></tr>
+            {% endif %}
             {% if tab_index == 5 %}
                 <tr><th>Поставщик</th><th>Телефон</th><th>Продукт</th><th>Годность</th><th>Количество</th><th>Назначение</th>
                     <th>Дата</th></tr>
@@ -23,6 +26,9 @@
                 {% if tab_index == 2 %}
                     <tr><td>{{ data_row.provider }}</td><td>{{ data_row.provider.phone }}</td><td>{{ data_row.provider.address }}</td>
                         <td>{{ data_row.partner }}</td><td>{{ data_row.designation }}</td></tr>
+                {% endif %}
+                {% if tab_index == 4 %}
+                    <tr><td>{{ data_row.product }}</td><td>{{ data_row.expire_time }}</td></tr>
                 {% endif %}
                 {% if tab_index == 5 %}
                     <tr><td>{{ data_row.provider }}</td><td>{{ data_row.provider.phone }}</td><td>{{ data_row.product }}</td>
@@ -34,4 +40,73 @@
     {% else %}
         <p>No row are in table.</p>
     {% endif %}
+
+    {% if tab_index == 4 %}
+        <canvas id="myChart"></canvas>
+    {% endif %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for data_row in table_data %},'{{ data_row.product }}', {% endfor %}],
+                datasets: [{
+                    label: 'Продукты и сроки годности',
+                    data: [{% for data_row in table_data %},'{{ data_row.expire_time }}', {% endfor %}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 255, 80, 0.4)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 255, 80, 0.4)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(254, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(0, 255, 0, 0.4)',
+                        'rgba(0, 255, 0, 0.4)',
+                        'rgba(0, 255, 0, 0.4)',
+
+
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 255, 80, 0.4)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 255, 80, 0.4)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(254, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(0, 255, 0, 0.4)',
+
+
+                    ],
+                    borderWidth: 3
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+</script>
 {% endblock %}
