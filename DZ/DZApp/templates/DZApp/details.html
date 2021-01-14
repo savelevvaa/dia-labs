@@ -5,48 +5,124 @@
 {% endblock %}
 
 {% block styles %}
+    a:link {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
 
+    a:visited {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:active {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
 {% endblock %}
 
 {% block content %}
-    <h1>Детали: {{ header }}</h1>
+    {% if update %}
+        <h1>Страница редактирования ({{ header }})</h1>
+        <form id="update_form" method="post">
+            {% csrf_token %}
+            {{form}}
+        </form>
+        <button form="update_form" type="submit" class="btn btn-primary mt-3">Сохранить</button>
+    {% else %}
+    <div class="d-flex justify-content-between mb-4">
+        <h1>Детали: {{ header }}</h1>
+        {%  if username == "admin" %}
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                Создать запись
+            </button>
+        {% endif %}
+    </div>
     {% if table_data %}
         <table class="table table-striped table-bordered table-sm w-75 mx-auto">
-        {% if tab_index == 1 %}
-            <tr><th>Название</th></tr>
+        <tr>
+        {%  if username == "admin" %}
+            <th>id</th>
         {% endif %}
-        {% if tab_index == 2 %}
-            <tr><th>Провайдер</th><th>Партнер</th><th>Цель партнерства</th></tr>
+        {% if tab_index == 1 %}
+            <th>Название</th>
         {% endif %}
         {% if tab_index == 3 %}
-            <tr><th>Название</th><th>Адрес</th><th>Телефон</th></tr>
+            <th>Название</th><th>Адрес</th><th>Телефон</th>
         {% endif %}
         {% if tab_index == 4 %}
-            <tr><th>Название продукта</th><th>Годность (дни)</th></tr>
+            <th>Название продукта</th><th>Годность (дни)</th>
         {% endif %}
-        {% if tab_index == 5 %}
-            <tr><th>Поставщик</th><th>Продукт</th><th>Количество</th><th>Назначение</th><th>Дата</th></tr>
+        {%  if username == "admin" %}
+            <th style="width: 100px;">Изменить</th>
         {% endif %}
+        </tr>
         {% for data_row in table_data %}
-            {% if tab_index == 1 %}
-                <tr><td>{{ data_row.name }}</td></tr>
+            <tr>
+            {%  if username == "admin" %}
+                <td>{{ data_row.id }}</td>
             {% endif %}
-            {% if tab_index == 2 %}
-                <tr><td>{{ data_row.provider }}</td><td>{{ data_row.partner }}</td><td>{{ data_row.designation }}</td></tr>
+            {% if tab_index == 1 %}
+                <td>{{ data_row.name }}</td>
             {% endif %}
             {% if tab_index == 3 %}
-                <tr><td>{{ data_row.name }}</td><td>{{ data_row.address }}</td><td>{{ data_row.phone }}</td></tr>
+                <td>{{ data_row.name }}</td><td>{{ data_row.address }}</td><td>{{ data_row.phone }}</td>
             {% endif %}
             {% if tab_index == 4 %}
-                <tr><td>{{ data_row.product }}</td><td>{{ data_row.expire_time }}</td></tr>
+                <td>{{ data_row.product }}</td><td>{{ data_row.expire_time }}</td>
             {% endif %}
-            {% if tab_index == 5 %}
-                <tr><td>{{ data_row.provider }}</td><td>{{ data_row.product }}</td><td>{{ data_row.quantity }}</td>
-                <td>{{ data_row.destination }}</td><td>{{ data_row.date }}</td></tr>
+            {%  if username == "admin" %}
+                <td style="text-align:center; width: 130px;">
+                    <div class="btn-group d-flex" role="group" aria-label="Basic example">
+                        <button class="btn btn-primary btn-sm" type="button">
+                            <a class="nav-link" href="{% url 'delete' tab_index data_row.id %}">X</a>
+                        </button>
+                        <button class="btn btn-primary btn-sm" type="button">
+                            <a class="nav-link" href="{% url 'update' tab_index data_row.id %}">></a>
+                        </button>
+                    </div>
+                </td>
             {% endif %}
+            </tr>
         {% endfor %}
         </table>
     {% else %}
         <p>No films are available.</p>
     {% endif %}
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Добавление новой записи ({{ header }})</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="add form" method="post">
+                {% csrf_token %}
+                {{form}}
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button form="add form" type="submit" class="btn btn-primary">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endif %}
+
 {% endblock %}
