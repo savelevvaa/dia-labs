@@ -8,9 +8,9 @@
 [[Сайт преподавателя](https://ugapanyuk.github.io)]
 
 ## Лабораторные работы
+* [**Домашнее задание**](https://github.com/dlnwlkmn/dia-labs/tree/master/DZ)
 * [**Рубежный контроль №1**](https://github.com/dlnwlkmn/dia-labs/tree/master/RK1)
 * [**Рубежный контроль №2**](https://github.com/dlnwlkmn/dia-labs/tree/master/RK2)
-
 * [Лабораторная работа №1](https://github.com/dlnwlkmn/dia-labs/tree/master/LR1)
 * [Лабораторная работа №2](https://github.com/dlnwlkmn/dia-labs/tree/master/LR2)
 * [Лабораторная работа №3](https://github.com/dlnwlkmn/dia-labs/tree/master/LR3)
